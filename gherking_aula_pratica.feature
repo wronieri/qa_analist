@@ -5,11 +5,20 @@ Feature: emissao de certificado
 
 Background: estar matriculado no curso
 Given que estou logoado na plataforma
-And matriculado no curso
+And e possuo matricula ativa 
 
-Scenario: emissao de certificado
-     When evfinalizo meu curso
-    Then obtenho  o certificado
+Scenario Outline: Emissao de certificado
+And matriculado no curso <NomeCurso>
+When finalizo o meu curso
+Then tenho o meu certificado emitido
+
+Examples:
+    | NomeCurso |
+    | "gherkin" |
+    | "gherkin intermediario" |
+    | "gherking avanvado" |
+
+
 
 Scenario: curso em andamento
     When assisto as aulas
